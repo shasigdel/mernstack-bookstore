@@ -10,7 +10,7 @@ const DeleteBooks = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { equeueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleDeleteBook = () => {
     setLoading(true);
@@ -18,12 +18,12 @@ const DeleteBooks = () => {
       .delete(`http://localhost:5555/books/${id}`)
       .then(() => {
         setLoading(false);
-        equeueSnackbar("Successfully deleted", { variant: "success" });
+        enqueueSnackbar("Successfully deleted", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-        equeueSnackbar("Error", { variant: "error" });
+        enqueueSnackbar("Error", { variant: "error" });
         console.log(error);
       });
   };
